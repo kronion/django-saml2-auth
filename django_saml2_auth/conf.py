@@ -24,13 +24,6 @@ def parse_settings(domain):
     acs_url = domain + get_reverse(['acs', 'django_saml2_auth:acs'])
 
     saml_settings = {
-        'metadata': {
-            'remote': [
-                {
-                    "url": settings.SAML2_AUTH['METADATA_AUTO_CONF_URL'],
-                },
-            ],
-        },
         'service': {
             'sp': {
                 'endpoints': {
