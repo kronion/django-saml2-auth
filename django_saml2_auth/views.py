@@ -109,7 +109,7 @@ def acs(r):
         if user_identity is None:
             return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
 
-        unique_kwarg = {identifier: user_identity[identifier]}
+        unique_kwarg = {identifier: user_identity[identifier][0]}
 
     target_user = None
     try:
