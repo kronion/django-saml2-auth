@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from django_saml2_auth.conf import get_saml_client
-from django_saml2_auth.utils import get_sp_domain
+from django_saml2_auth.utils import get_reverse, get_sp_domain
 from saml2 import (
     BINDING_HTTP_POST,
     BINDING_HTTP_REDIRECT,
