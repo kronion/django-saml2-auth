@@ -53,7 +53,13 @@ def parse_settings(domain):
 
 
 def _get_metadata():
+<<<<<<< HEAD
     if 'METADATA_LOCAL_FILE_PATH' in settings.SAML2_AUTH:
+=======
+    if 'METADATA' in settings.SAML2_AUTH:
+        return settings.SAML2_AUTH['METADATA']
+    elif 'METADATA_LOCAL_FILE_PATH' in settings.SAML2_AUTH:
+>>>>>>> Allow for multiple IDPs and split code into different modules
         return {
             'local': [settings.SAML2_AUTH['METADATA_LOCAL_FILE_PATH']]
         }
@@ -66,5 +72,5 @@ def _get_metadata():
             ]
         }
     else:
-        raise Exception('Invalid configuration, one of "METADATA_LOCAL_FILE_PATH" '
+        raise Exception('Invalid configuration, one of "METADATA", "METADATA_LOCAL_FILE_PATH", '
                         'or "METADATA_AUTO_CONF_URL" is required')

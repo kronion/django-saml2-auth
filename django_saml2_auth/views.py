@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
+from django_saml2_auth.conf import get_saml_client
+from django_saml2_auth.utils import get_sp_domain
 from saml2 import (
     BINDING_HTTP_POST,
     BINDING_HTTP_REDIRECT,
@@ -157,8 +158,17 @@ def signin(r):
 
     r.session['login_next_url'] = next_url
 
-    saml_client = _get_saml_client(get_current_domain(r))
-    _, info = saml_client.prepare_for_authenticate()
+    # Allow the requester to select the IDP they want to use. Required if multiple IDPs are configured.
+    selected_idp = r.GET.get('idp', None)
+
+    saml_client = get_saml_client(get_sp_domain(r))
+    idps = saml_client.config.metadata.identity_providers()
+
+    if selected_idp is None and len(idps) > 1:
+        # TODO: Explain that idp selection is required
+        return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
+
+    _, info = saml_client.prepare_for_authenticate(entityid=selected_idp)
 
     redirect_url = None
 
