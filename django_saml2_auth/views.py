@@ -87,20 +87,33 @@ def acs(r):
     if authn_response is None:
         return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
 
-    user_identity = authn_response.get_identity()
-    if user_identity is None:
+    entity_id = authn_response.issuer()
+    if entity_id is None:
         return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
 
-    user_email = user_identity[settings.SAML2_AUTH.get('ATTRIBUTES_MAP', {}).get('email', 'Email')][0]
-    user_name = user_identity[settings.SAML2_AUTH.get('ATTRIBUTES_MAP', {}).get('username', 'UserName')][0]
-    user_first_name = user_identity[settings.SAML2_AUTH.get('ATTRIBUTES_MAP', {}).get('first_name', 'FirstName')][0]
-    user_last_name = user_identity[settings.SAML2_AUTH.get('ATTRIBUTES_MAP', {}).get('last_name', 'LastName')][0]
+    attributes_for_entity = settings.SAML2_AUTH['ATTRIBUTES_MAP'].get(entity_id, {})
+    if not attributes_for_entity:
+        return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
+
+    identifier = attributes_for_entity["UNIQUE_IDENTIFIER"]
+
+    if attributes_for_entity.get("USE_NAME_ID", False):
+        name_id = authn_response.name_id
+        if name_id is None:
+            return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
+
+        unique_kwarg = {identifier: name_id.text}
+
+    else:
+        user_identity = authn_response.get_identity()
+        if user_identity is None:
+            return HttpResponseRedirect(get_reverse(['denied', 'django_saml2_auth:denied']))
+
+        unique_kwarg = {identifier: user_identity[identifier]}
 
     target_user = None
-    is_new_user = False
-
     try:
-        target_user = User.objects.get(username=user_name)
+        target_user = User.objects.get(**unique_kwarg)
         if settings.SAML2_AUTH.get('TRIGGER', {}).get('BEFORE_LOGIN', None):
             import_string(settings.SAML2_AUTH['TRIGGER']['BEFORE_LOGIN'])(user_identity)
     except User.DoesNotExist:
