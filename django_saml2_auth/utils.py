@@ -2,15 +2,14 @@ from pkg_resources import parse_version
 
 from django import get_version
 from django.conf import settings
-from django.core.exceptions import NoReverseMatch
 
 
 def get_reverse(objs):
     # In order to support different django version, I have to do this
     if parse_version(get_version()) >= parse_version('2.0'):
-        from django.urls import reverse
+        from django.urls import reverse, NoReverseMatch
     else:
-        from django.core.urlresolvers import reverse
+        from django.core.urlresolvers import reverse, NoReverseMatch
     if objs.__class__.__name__ not in ['list', 'tuple']:
         objs = [objs]
 
