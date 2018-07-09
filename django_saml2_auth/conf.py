@@ -21,7 +21,7 @@ def get_saml_config(domain):
 
 
 def parse_settings(domain):
-    acs_url = domain + get_reverse([acs, 'acs', 'django_saml2_auth:acs'])
+    acs_url = domain + get_reverse(['acs', 'django_saml2_auth:acs'])
 
     saml_settings = {
         'metadata': {
