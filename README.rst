@@ -1,41 +1,36 @@
-=====================================
-Django SAML2 Authentication Made Easy
-=====================================
+===================================================
+Simple and Configurable Django SAML2 Authentication
+===================================================
 
-:Author: Fang Li
-:Version: Use 1.1.4 for Django <=1.9 and 2.x.x for Django >= 1.9
+.. image:: https://img.shields.io/pypi/pyversions/django-saml2-auth-plus.svg
+    :target: https://pypi.python.org/pypi/django-saml2-auth-plus
 
-.. image:: https://img.shields.io/pypi/pyversions/django-saml2-auth.svg
-    :target: https://pypi.python.org/pypi/django-saml2-auth
-
-.. image:: https://img.shields.io/pypi/v/django-saml2-auth.svg
-    :target: https://pypi.python.org/pypi/django-saml2-auth
-
-.. image:: https://img.shields.io/pypi/dm/django-saml2-auth.svg
-        :target: https://pypi.python.org/pypi/django-saml2-auth
+.. image:: https://img.shields.io/pypi/v/django-saml2-auth-plus.svg
+    :target: https://pypi.python.org/pypi/django-saml2-auth-plus
 
 This project aims to provide a dead simple way to integrate SAML2
-Authentication into your Django powered app. Try it now, and get rid of the
+Authentication into your Django powered app. It is a fork of Fang Li's django-saml2-auth
+with additional configuration options. Try it now, and get rid of the
 complicated configuration of SAML.
 
 Any SAML2 based SSO(Single-Sign-On) identity provider with dynamic metadata
 configuration is supported by this Django plugin, for example Okta.
 
-
+Supports Django >= 1.9.
 
 Donate
 ======
 
 We accept your donations by clicking the awesome |star| instead of any physical transfer.
 
-.. |star| image:: https://img.shields.io/github/stars/fangli/django-saml2-auth.svg?style=social&label=Star&maxAge=86400
+.. |star| image:: https://img.shields.io/github/stars/kronion/django-saml2-auth.svg?style=social&label=Star&maxAge=86400
 
 
 
 Dependencies
 ============
 
-This plugin is compatible with Django 1.6/1.7/1.8/1.9/1.10. The `pysaml2` Python
+This plugin is compatible with Django 1.6/1.7/1.8/1.9/1.10/1.11. The `pysaml2` Python
 module is required.
 
 
@@ -47,13 +42,13 @@ You can install this plugin via `pip`:
 
 .. code-block:: bash
 
-    # pip install django_saml2_auth
+    # pip install django_saml2_auth_plus
 
 or from source:
 
 .. code-block:: bash
 
-    # git clone https://github.com/fangli/django-saml2-auth
+    # git clone https://github.com/kronion/django-saml2-auth-plus
     # cd django-saml2-auth
     # python setup.py install
 
@@ -243,31 +238,11 @@ How to Contribute
 #. Write a test which shows that the bug was fixed or that the feature works as expected.
 #. Send a pull request and bug the maintainer until it gets merged and published. :) Make sure to add yourself to AUTHORS_.
 
-.. _`the repository`: http://github.com/fangli/django-saml2-auth
-.. _AUTHORS: https://github.com/fangli/django-saml2-auth/blob/master/AUTHORS.rst
+.. _`the repository`: http://github.com/kronion/django-saml2-auth-plus
+.. _AUTHORS: https://github.com/kronion/django-saml2-auth-plus/blob/master/AUTHORS.rst
 
 
 Release Log
 ===========
 
-2.2.0: ADFS SAML compatibility and fixed some issue for Django2.0
-
-2.1.2: Merged #35
-
-2.1.1: Added ASSERTION_URL in settings.
-
-2.1.0: Add DEFAULT_NEXT_URL. Issue #19.
-
-2.0.4: Fixed compatibility with Windows.
-
-2.0.3: Fixed a vulnerabilities in the login flow, thanks qwrrty.
-
-2.0.1: Add support for Django 1.10
-
-1.1.4: Fixed urllib bug
-
-1.1.2: Added support for Python 2.7/3.x
-
-1.1.0: Added support for Django 1.6/1.7/1.8/1.9
-
-1.0.4: Fixed English grammar mistakes
+1.0.0: Fork from django-saml2-auth and deploy to PyPI.

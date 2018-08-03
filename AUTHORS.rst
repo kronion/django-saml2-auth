@@ -1,29 +1,15 @@
-This project is written and maintained by Fang Li and
-various contributors:
+This project is written and maintained by Collin Stedman.
+Credits to the authors of the libraries from which this work derives:
 
 
 Django Saml2 Auth
 -----------------
 
-- Fang Li
+- Fang Li and contributors
 
 
 
 Pysaml2
 -------
 
-- Roland Hedberg and it's contributors
-
-
-
-Contributors
-------------
-
-- `DSpeichert <https://github.com/DSpeichert>`_
-- `jacobh <https://github.com/jacobh>`_
-- `Gene Wood <http://github.com/gene1wood/>`_
-- `Terry <https://github.com/tpeng>`_
-- `Tim Pierce <https://github.com/qwrrty/>`_ (Adobe Systems)
-- `Tonymke <https://github.com/tonymke/>`_
-- `pintor <https://github.com/pintor>`_
-- `BaconAndEggs <https://github.com/BaconAndEggs>`_
+- Roland Hedberg and contributors
