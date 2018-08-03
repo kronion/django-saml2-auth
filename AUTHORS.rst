@@ -12,7 +12,7 @@ Django Saml2 Auth
 Pysaml2
 -------
 
-- Roland Hedberg and it's contributors
+- Roland Hedberg and contributors
 
 
 
@@ -29,4 +29,5 @@ Contributors
 - `BaconAndEggs <https://github.com/BaconAndEggs>`_
 - `Ryan Mahaffey <https://github.com/mahaffey>`_
 - `ayr-ton <https://github.com/ayr-ton>`_
-_ `kevPo <https://github.com/kevPo>`_
+- `kevPo <https://github.com/kevPo>`_
+- `Kronion <https://github.com/kronion>`_

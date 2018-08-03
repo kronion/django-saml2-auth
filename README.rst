@@ -35,7 +35,7 @@ We accept your donations by clicking the awesome |star| instead of any physical 
 Dependencies
 ============
 
-This plugin is compatible with Django 1.6/1.7/1.8/1.9/1.10. The `pysaml2` Python
+This plugin is compatible with Django 1.6/1.7/1.8/1.9/1.10/1.11. The `pysaml2` Python
 module is required.
 
 
