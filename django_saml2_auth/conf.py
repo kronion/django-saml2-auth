@@ -53,13 +53,9 @@ def parse_settings(domain):
 
 
 def _get_metadata():
-<<<<<<< HEAD
-    if 'METADATA_LOCAL_FILE_PATH' in settings.SAML2_AUTH:
-=======
     if 'METADATA' in settings.SAML2_AUTH:
         return settings.SAML2_AUTH['METADATA']
     elif 'METADATA_LOCAL_FILE_PATH' in settings.SAML2_AUTH:
->>>>>>> Allow for multiple IDPs and split code into different modules
         return {
             'local': [settings.SAML2_AUTH['METADATA_LOCAL_FILE_PATH']]
         }
